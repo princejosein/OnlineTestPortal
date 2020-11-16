@@ -1,11 +1,12 @@
 <template>
+
 <v-container
 id="category-list"
 fluid
 tag="section">
-    <v-row>
 
-<!-- Total category count widget -->
+    <v-row>
+        <!-- Total category count widget -->
         <v-col
         cols="12"
         sm="6"
@@ -19,7 +20,7 @@ tag="section">
         />
         </v-col>
 
-<!-- Total active category count widget -->
+        <!-- Total active category count widget -->
         <v-col
         cols="12"
         sm="6"
@@ -61,33 +62,35 @@ tag="section">
         />
         </v-col>
 
-<!-- List table of categories -->
-<v-col
+        <!-- List table of categories -->
+        <v-col
         cols="12"
         >
-<base-material-card
-      icon="mdi-clipboard-text"
-      title="Category List"
-      class="px-5 py-3"
-    >
+        <base-material-card
+            icon="mdi-clipboard-text"
+            title="Category List"
+            class="px-5 py-3"
+            >
 
-
-
-    <v-data-table
-    :headers="headers"
-    :items="categoryList"
-    class="elevation-1"
-    >
-    <template v-slot:top>
-      <v-toolbar
-        flat
-      >
-        <v-spacer></v-spacer>
-        <v-dialog
-          v-model="dialog"
-          max-width="500px"
+        <!-- Datatable -->
+        <v-data-table
+        :headers="headers"
+        :items="categoryList"
+        class="elevation-1"
         >
-          <template v-slot:activator="{ on, attrs }">
+
+            <template v-slot:top>
+            <v-toolbar
+                flat
+            >
+            <v-spacer></v-spacer>
+
+            <!-- Dialog for add and edit category -->
+            <v-dialog
+            v-model="dialog"
+            max-width="500px"
+            >
+            <template v-slot:activator="{ on, attrs }">
             <v-btn
               color="primary"
               dark
@@ -95,167 +98,168 @@ tag="section">
               v-bind="attrs"
               v-on="on"
             >
-              New Category
+            New Category
             </v-btn>
-          </template>
-          <v-card>
+            </template>
 
-               <validation-observer v-slot="{ handleSubmit }">
+            <!-- Dialog form -->
+            <v-card>
+                <validation-observer v-slot="{ handleSubmit }">
+                <form @submit.prevent="handleSubmit(onSubmit)">
 
-              <form @submit.prevent="handleSubmit(onSubmit)">
+                <v-card-title>
+                <span class="headline">{{ formTitle }}</span>
+                </v-card-title>
 
-            <v-card-title>
-              <span class="headline">{{ formTitle }}</span>
-            </v-card-title>
+                <v-card-text>
+                <v-container>
+                    <v-row>
+                    <v-col
+                        cols="12"
+                    >
 
-            <v-card-text>
-              <v-container>
-                <v-row>
-                  <v-col
-                    cols="12"
-                  >
-                   <validation-provider name="Category Name" rules="required|max:64" v-slot="{ errors }">
-        <v-text-field
+                    <!-- Category Name -->
+                    <validation-provider name="Category Name" rules="required|max:64" v-slot="{ errors }">
+                    <v-text-field
                       v-model="editedItem.name"
                       label="Category Name"
                       data-vv-as="Category Name"
                     ></v-text-field>
-        <span class="red--text">{{ errors[0] }}</span>
-      </validation-provider>
+                    <span class="red--text">{{ errors[0] }}</span>
+                    </validation-provider>
 
- <validation-provider name="Category Description" rules="required" v-slot="{ errors }">
-      <v-textarea
-      v-model="editedItem.description"
-      label="Category Description"
-      auto-grow
-    ></v-textarea>
-    <span class="red--text">{{ errors[0] }}</span>
-      </validation-provider>
+                    <validation-provider name="Category Description" rules="required" v-slot="{ errors }">
+                    <v-textarea
+                    v-model="editedItem.description"
+                    label="Category Description"
+                    auto-grow
+                    ></v-textarea>
+                    <span class="red--text">{{ errors[0] }}</span>
+                    </validation-provider>
 
-                  </v-col>
-                  <v-col
-                    cols="12"
-                  >
-                  <v-select
-          v-model="editedItem.status"
-          :items="statuses"
-          label="Status"
-        ></v-select>
-                  </v-col>
+                    </v-col>
 
-                  <v-col v-if="errored">
-                      <section>
-                <span class="red--text">Sorry, we are too busy. Please try again after some time</span>
-            </section>
-                  </v-col>
+                    <v-col
+                        cols="12"
+                    >
+                    <v-select
+                    v-model="editedItem.status"
+                    :items="statuses"
+                    label="Status"
+                    ></v-select>
+                    </v-col>
 
-                </v-row>
-              </v-container>
-            </v-card-text>
+                    <!-- Error section -->
+                    <v-col v-if="errored">
+                        <section>
+                        <span class="red--text">Sorry, we are too busy. Please try again after some time</span>
+                    </section>
+                    </v-col>
 
+                    </v-row>
+                </v-container>
+                </v-card-text>
 
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                color="secondary"
-                @click="close"
-              >
+                <!-- Button area of dialog -->
+                <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                    color="secondary"
+                    @click="close"
+                >
                 Cancel
-              </v-btn>
-              <v-btn
-                color="primary"
-                type="submit"
-              >
-                Save
-              </v-btn>
-            </v-card-actions>
-              </form>
+                </v-btn>
+
+                <v-btn
+                    color="primary"
+                    type="submit"
+                >
+                    Save
+                </v-btn>
+                </v-card-actions>
+                </form>
                </validation-observer>
           </v-card>
         </v-dialog>
       </v-toolbar>
     </template>
 
-
+    <!-- table actions button -->
     <template v-slot:item.actions="{ item }">
-      <v-icon
-        class="mr-2"
-        @click="editItem(item)"
-      >
+        <v-icon
+            class="mr-2"
+            @click="editItem(item)"
+        >
         mdi-pencil
-      </v-icon>
-
+        </v-icon>
     </template>
 
     </v-data-table>
-
-
+    <!-- Datatable ends -->
 
     </base-material-card>
-</v-col>
-
+    </v-col>
     </v-row>
 </v-container>
 </template>
 
 <script>
-
-
 export default {
     name:"CategoryList",
     data() {
         return {
-    errored: false,
+            errored: false,
             valid: true,
-      statuses:[
-          'Active',
-          'Not Active'
-      ],
-      dialog: false,
-      dialogDelete: false,
-      editedIndex: -1,
-      editedItem: {
-        id:0,
-        name: '',
-        description:'',
-        status: 'Active',
-      },
-      defaultItem: {
-        id:0,
-        name: '',
-        description:'',
-        calories: 'Active',
-      },
-
-
-
+            statuses:[
+                'Active',
+                'Not Active'
+            ],
+            dialog: false,
+            dialogDelete: false,
+            editedIndex: -1,
+            editedItem: {
+                id:0,
+                name: '',
+                description:'',
+                status: 'Active',
+            },
+            defaultItem: {
+                id:0,
+                name: '',
+                description:'',
+                calories: 'Active',
+            },
             total:"0",
             active:"0",
             headers:[
-          {
-            text: 'Name',
-            align: 'start',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Status', value: 'status' },
-          { text: 'Created', value: 'created_at' },
-          { text: 'Updated', value: 'updated_at' },
-          { text: 'Actions', value: 'actions', sortable: false },
-        ],
-        categoryList:[]
+                {
+                    text: 'Name',
+                    align: 'start',
+                    sortable: false,
+                    value: 'name',
+                },
+                { text: 'Status', value: 'status' },
+                { text: 'Created', value: 'created_at' },
+                { text: 'Updated', value: 'updated_at' },
+                { text: 'Actions', value: 'actions', sortable: false },
+            ],
+            categoryList:[]
         }
     },
-     computed: {
-      formTitle () {
-        return this.editedIndex === -1 ? 'New Category' : 'Edit Category'
-      },
+    computed: {
+        formTitle () {
+            return this.editedIndex === -1 ? 'New Category' : 'Edit Category'
+        },
     },
+
+    // Check dialog open or close
     watch: {
       dialog (val) {
         val || this.close()
       },
     },
+
+    // Load categories from API
     mounted() {
         this.getCategories()
     },
@@ -272,33 +276,33 @@ export default {
             }
         },
         editItem (item) {
-        this.editedIndex = this.categoryList.indexOf(item)
-        this.editedItem = Object.assign({}, item)
-        this.dialog = true
-      },
-      close() {
-          this.dialog = false
-          this.$nextTick(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
-          this.editedIndex = -1
-        })
-      },
-      async onSubmit () {
-        this.errored = false;
-        try {
-            if(this.editedIndex === -1)
-            {
-                console.log(this.editItem)
-                const response = await axios.post("/api/category", this.editedItem);
-            } else {
-                const response = await axios.put(`/api/category/${this.editedItem.id}`, this.editedItem);
+            this.editedIndex = this.categoryList.indexOf(item)
+            this.editedItem = Object.assign({}, item)
+            this.dialog = true
+        },
+        close() {
+            this.dialog = false
+            this.$nextTick(() => {
+                this.editedItem = Object.assign({}, this.defaultItem)
+                this.editedIndex = -1
+            })
+        },
+        async onSubmit () {
+            this.errored = false;
+            try {
+                if(this.editedIndex === -1)
+                {
+                    console.log(this.editItem)
+                    const response = await axios.post("/api/category", this.editedItem);
+                } else {
+                    const response = await axios.put(`/api/category/${this.editedItem.id}`, this.editedItem);
+                }
+                this.close()
+                this.getCategories();
+            } catch (error) {
+                console.log(error);
+                this.errored = true;
             }
-            this.close()
-            this.getCategories();
-        } catch (error) {
-            console.log(error);
-            this.errored = true;
-        }
 
         }
     }
