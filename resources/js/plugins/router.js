@@ -24,7 +24,18 @@ export default new Router({
             path: 'pages/category',
             component: () => import('../components/dashboard/pages/category/List'),
           },
-
+          // quiz
+        {
+            name: 'Quiz',
+            path: 'pages/quiz',
+            component: () => import('../components/dashboard/pages/quiz/List'),
+          },
+        // Questions
+        {
+            name: 'Questions',
+            path: 'pages/questions',
+            component: () => import('../components/dashboard/pages/questions/List'),
+        },
            // Pages
         {
             name: 'User Profile',

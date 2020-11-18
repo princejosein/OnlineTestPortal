@@ -6,7 +6,7 @@
     :expand-on-hover="expandOnHover"
     :right="$vuetify.rtl"
     :src="barImage"
-    mobile-break-point="960"
+    mobile-breakpoint="960"
     app
     width="260"
     v-bind="$attrs"
@@ -113,6 +113,16 @@
           icon: 'mdi-shape-outline ',
           title: 'Category',
           to: '/pages/category',
+        },
+        {
+          icon: 'mdi-shape-outline ',
+          title: 'Quiz',
+          to: '/pages/quiz',
+        },
+         {
+          icon: 'mdi-shape-outline ',
+          title: 'Questions',
+          to: '/pages/questions',
         },
         {
           icon: 'mdi-account',
