@@ -36,6 +36,11 @@ export default new Router({
             path: 'pages/questions',
             component: () => import('../components/dashboard/pages/questions/List'),
         },
+        {
+            name: 'Quiz Questions',
+            path: 'pages/quiz/questions/:quiz_id',
+            component: () => import('../components/dashboard/pages/questions/QuizList'),
+        },
            // Pages
         {
             name: 'User Profile',

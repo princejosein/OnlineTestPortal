@@ -215,7 +215,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'DashboardIndex',
   components: {
     DashboardCoreAppBar: function DashboardCoreAppBar() {
-      return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../core/AppBar */ "./resources/js/components/core/AppBar.vue"));
+      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../core/AppBar */ "./resources/js/components/core/AppBar.vue"));
     },
     DashboardCoreDrawer: function DashboardCoreDrawer() {
       return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ../core/Drawer */ "./resources/js/components/core/Drawer.vue"));
@@ -224,7 +224,7 @@ __webpack_require__.r(__webpack_exports__);
       return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../core/Settings */ "./resources/js/components/core/Settings.vue"));
     },
     DashboardCoreView: function DashboardCoreView() {
-      return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../core/View */ "./resources/js/components/core/View.vue"));
+      return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ../core/View */ "./resources/js/components/core/View.vue"));
     }
   },
   data: function data() {
