@@ -1,22 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[11],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/core/AppBar.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/core/AppBar.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/component/Icons.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/component/Icons.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuetify_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuetify/lib */ "./node_modules/vuetify/lib/index.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -96,101 +88,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// Components
- // Utilities
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'DashboardCoreAppBar',
-  components: {
-    AppBarItem: {
-      render: function render(h) {
-        var _this = this;
-
-        return h(vuetify_lib__WEBPACK_IMPORTED_MODULE_0__["VHover"], {
-          scopedSlots: {
-            "default": function _default(_ref) {
-              var hover = _ref.hover;
-              return h(vuetify_lib__WEBPACK_IMPORTED_MODULE_0__["VListItem"], {
-                attrs: _this.$attrs,
-                "class": {
-                  'black--text': !hover,
-                  'white--text secondary elevation-12': hover
-                },
-                props: _objectSpread({
-                  activeClass: '',
-                  dark: hover,
-                  link: true
-                }, _this.$attrs)
-              }, _this.$slots["default"]);
-            }
-          }
-        });
-      }
-    }
-  },
-  props: {
-    value: {
-      type: Boolean,
-      "default": false
-    }
-  },
+  name: 'DashboardIcons',
   data: function data() {
     return {
-      notifications: ['Mike John Responded to your email', 'You have 5 new tasks', 'You\'re now friends with Andrew', 'Another Notification', 'Another one']
+      icons: ['mdi-access-point', 'mdi-access-point-network', 'mdi-account', 'mdi-account-alert', 'mdi-account-box', 'mdi-account-box-multiple', 'mdi-account-box-outline', 'mdi-account-card-details', 'mdi-account-check', 'mdi-account-circle', 'mdi-account-convert', 'mdi-account-edit', 'mdi-account-group', 'mdi-account-heart', 'mdi-account-key', 'mdi-account-location', 'mdi-account-minus', 'mdi-account-multiple', 'mdi-account-multiple-check', 'mdi-account-multiple-minus', 'mdi-account-multiple-outline', 'mdi-account-multiple-plus', 'mdi-account-multiple-plus-outline', 'mdi-account-network', 'mdi-account-off', 'mdi-account-outline', 'mdi-account-plus', 'mdi-account-plus-outline', 'mdi-account-remove', 'mdi-account-search', 'mdi-account-search-outline', 'mdi-account-settings', 'mdi-account-settings-variant', 'mdi-account-star', 'mdi-account-switch', 'mdi-accusoft', 'mdi-adjust', 'mdi-adobe', 'mdi-air-conditioner', 'mdi-airballoon', 'mdi-airplane', 'mdi-airplane-landing', 'mdi-airplane-off', 'mdi-airplane-takeoff', 'mdi-airplay', 'mdi-airport', 'mdi-alarm', 'mdi-alarm-bell', 'mdi-alarm-check', 'mdi-alarm-light', 'mdi-alarm-multiple', 'mdi-alarm-off', 'mdi-alarm-plus', 'mdi-alarm-snooze', 'mdi-album', 'mdi-alert', 'mdi-alert-box', 'mdi-alert-circle', 'mdi-alert-circle-outline', 'mdi-alert-decagram', 'mdi-alert-octagon', 'mdi-alert-octagram', 'mdi-alert-outline', 'mdi-alien', 'mdi-all-inclusive', 'mdi-alpha', 'mdi-alphabetical', 'mdi-altimeter', 'mdi-amazon', 'mdi-amazon-alexa', 'mdi-amazon-drive', 'mdi-ambulance', 'mdi-amplifier', 'mdi-anchor', 'mdi-android', 'mdi-android-debug-bridge', 'mdi-android-head', 'mdi-android-studio', 'mdi-angle-acute', 'mdi-angle-obtuse', 'mdi-angle-right', 'mdi-angular', 'mdi-angularjs', 'mdi-animation', 'mdi-animation-play', 'mdi-anvil', 'mdi-apple', 'mdi-apple-finder', 'mdi-apple-icloud', 'mdi-apple-ios', 'mdi-apple-keyboard-caps', 'mdi-apple-keyboard-command', 'mdi-apple-keyboard-control', 'mdi-apple-keyboard-option', 'mdi-apple-keyboard-shift', 'mdi-apple-safari', 'mdi-application', 'mdi-approval', 'mdi-apps', 'mdi-arch', 'mdi-archive', 'mdi-arrange-bring-forward', 'mdi-arrange-bring-to-front', 'mdi-arrange-send-backward', 'mdi-arrange-send-to-back', 'mdi-arrow-all', 'mdi-arrow-bottom-left', 'mdi-arrow-bottom-left-bold-outline', 'mdi-arrow-bottom-left-thick', 'mdi-arrow-bottom-right', 'mdi-arrow-bottom-right-bold-outline', 'mdi-arrow-bottom-right-thick', 'mdi-arrow-collapse', 'mdi-arrow-collapse-all', 'mdi-arrow-collapse-down', 'mdi-arrow-collapse-horizontal', 'mdi-arrow-collapse-left', 'mdi-arrow-collapse-right', 'mdi-arrow-collapse-up', 'mdi-arrow-collapse-vertical', 'mdi-arrow-decision', 'mdi-arrow-decision-auto', 'mdi-arrow-decision-auto-outline', 'mdi-arrow-decision-outline', 'mdi-arrow-down', 'mdi-arrow-down-bold', 'mdi-arrow-down-bold-box', 'mdi-arrow-down-bold-box-outline', 'mdi-arrow-down-bold-circle', 'mdi-arrow-down-bold-circle-outline', 'mdi-arrow-down-bold-hexagon-outline', 'mdi-arrow-down-bold-outline', 'mdi-arrow-down-box', 'mdi-arrow-down-drop-circle', 'mdi-arrow-down-drop-circle-outline', 'mdi-arrow-down-thick', 'mdi-arrow-expand', 'mdi-arrow-expand-all', 'mdi-arrow-expand-down', 'mdi-arrow-expand-horizontal', 'mdi-arrow-expand-left', 'mdi-arrow-expand-right', 'mdi-arrow-expand-up', 'mdi-arrow-expand-vertical', 'mdi-arrow-left', 'mdi-arrow-left-bold', 'mdi-arrow-left-bold-box', 'mdi-arrow-left-bold-box-outline', 'mdi-arrow-left-bold-circle', 'mdi-arrow-left-bold-circle-outline', 'mdi-arrow-left-bold-hexagon-outline', 'mdi-arrow-left-bold-outline', 'mdi-arrow-left-box', 'mdi-arrow-left-drop-circle', 'mdi-arrow-left-drop-circle-outline', 'mdi-arrow-left-right-bold-outline', 'mdi-arrow-left-thick', 'mdi-arrow-right', 'mdi-arrow-right-bold', 'mdi-arrow-right-bold-box', 'mdi-arrow-right-bold-box-outline', 'mdi-arrow-right-bold-circle', 'mdi-arrow-right-bold-circle-outline', 'mdi-arrow-right-bold-hexagon-outline', 'mdi-arrow-right-bold-outline', 'mdi-arrow-right-box', 'mdi-arrow-right-drop-circle', 'mdi-arrow-right-drop-circle-outline', 'mdi-arrow-right-thick', 'mdi-arrow-split-horizontal', 'mdi-arrow-split-vertical', 'mdi-arrow-top-left', 'mdi-arrow-top-left-bold-outline', 'mdi-arrow-top-left-thick', 'mdi-arrow-top-right', 'mdi-arrow-top-right-bold-outline', 'mdi-arrow-top-right-thick', 'mdi-arrow-up', 'mdi-arrow-up-bold', 'mdi-arrow-up-bold-box', 'mdi-arrow-up-bold-box-outline', 'mdi-arrow-up-bold-circle', 'mdi-arrow-up-bold-circle-outline', 'mdi-arrow-up-bold-hexagon-outline', 'mdi-arrow-up-bold-outline', 'mdi-arrow-up-box', 'mdi-arrow-up-down-bold-outline', 'mdi-arrow-up-drop-circle', 'mdi-arrow-up-drop-circle-outline', 'mdi-arrow-up-thick', 'mdi-artist', 'mdi-assistant', 'mdi-asterisk', 'mdi-at', 'mdi-atlassian', 'mdi-atom', 'mdi-attachment', 'mdi-audio-video', 'mdi-audiobook', 'mdi-augmented-reality', 'mdi-auto-fix', 'mdi-auto-upload', 'mdi-autorenew', 'mdi-av-timer', 'mdi-axe', 'mdi-azure', 'mdi-baby', 'mdi-baby-buggy', 'mdi-backburger', 'mdi-backspace', 'mdi-backup-restore', 'mdi-badminton']
     };
-  },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['drawer'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])({
-    setDrawer: 'SET_DRAWER'
-  }))
+  }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/core/AppBar.vue?vue&type=template&id=10e278c7&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/core/AppBar.vue?vue&type=template&id=10e278c7& ***!
-  \**************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/component/Icons.vue?vue&type=template&id=133a23ed&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/component/Icons.vue?vue&type=template&id=133a23ed& ***!
+  \******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -203,175 +115,151 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-app-bar",
-    {
-      attrs: {
-        id: "app-bar",
-        absolute: "",
-        app: "",
-        color: "transparent",
-        flat: "",
-        height: "75"
-      }
-    },
+    "v-container",
+    { attrs: { id: "icons", fluid: "", tag: "section" } },
     [
+      _c("base-v-component", {
+        attrs: { heading: "Icons", link: "components/icons" }
+      }),
+      _vm._v(" "),
       _c(
-        "v-btn",
-        {
-          staticClass: "mr-3",
-          attrs: { elevation: "1", fab: "", small: "" },
-          on: {
-            click: function($event) {
-              return _vm.setDrawer(!_vm.drawer)
-            }
-          }
-        },
+        "v-row",
         [
-          _vm.value
-            ? _c("v-icon", [_vm._v("\n      mdi-view-quilt\n    ")])
-            : _c("v-icon", [_vm._v("\n      mdi-dots-vertical\n    ")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-toolbar-title", {
-        staticClass: "hidden-sm-and-down font-weight-light",
-        domProps: { textContent: _vm._s(_vm.$route.name) }
-      }),
-      _vm._v(" "),
-      _c("v-spacer"),
-      _vm._v(" "),
-      _c("v-text-field", {
-        staticStyle: { "max-width": "165px" },
-        attrs: { color: "secondary", "hide-details": "" },
-        scopedSlots: _vm._u(
-          [
-            _vm.$vuetify.breakpoint.mdAndUp
-              ? {
-                  key: "append-outer",
-                  fn: function() {
-                    return [
-                      _c(
-                        "v-btn",
-                        {
-                          staticClass: "mt-n2",
-                          attrs: { elevation: "1", fab: "", small: "" }
-                        },
-                        [_c("v-icon", [_vm._v("mdi-magnify")])],
-                        1
-                      )
-                    ]
-                  },
-                  proxy: true
-                }
-              : null
-          ],
-          null,
-          true
-        )
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "mx-3" }),
-      _vm._v(" "),
-      _c(
-        "v-btn",
-        { staticClass: "ml-2", attrs: { "min-width": "0", text: "", to: "/" } },
-        [_c("v-icon", [_vm._v("mdi-view-dashboard")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-menu",
-        {
-          attrs: {
-            bottom: "",
-            left: "",
-            "offset-y": "",
-            origin: "top right",
-            transition: "scale-transition"
-          },
-          scopedSlots: _vm._u([
-            {
-              key: "activator",
-              fn: function(ref) {
-                var attrs = ref.attrs
-                var on = ref.on
-                return [
-                  _c(
-                    "v-btn",
-                    _vm._g(
-                      _vm._b(
-                        {
-                          staticClass: "ml-2",
-                          attrs: { "min-width": "0", text: "" }
-                        },
-                        "v-btn",
-                        attrs,
-                        false
-                      ),
-                      on
-                    ),
-                    [
-                      _c(
-                        "v-badge",
-                        {
-                          attrs: { color: "red", overlap: "", bordered: "" },
-                          scopedSlots: _vm._u(
+          _c(
+            "v-col",
+            { attrs: { cols: "12" } },
+            [
+              _c(
+                "base-material-card",
+                {
+                  attrs: { color: "green" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "heading",
+                      fn: function() {
+                        return [
+                          _c(
+                            "div",
+                            { staticClass: "display-2 font-weight-light" },
                             [
-                              {
-                                key: "badge",
-                                fn: function() {
-                                  return [_c("span", [_vm._v("5")])]
+                              _vm._v(
+                                "\n            Material Design Icons\n          "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "subtitle-1 font-weight-light" },
+                            [
+                              _vm._v(
+                                "\n            See all available\n            "
+                              ),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "white--text",
+                                  attrs: {
+                                    href: "https://materialdesignicons.com/",
+                                    target: "_blank"
+                                  }
                                 },
-                                proxy: true
-                              }
-                            ],
-                            null,
-                            true
+                                [_vm._v("\n              Icons\n            ")]
+                              )
+                            ]
                           )
-                        },
-                        [_vm._v(" "), _c("v-icon", [_vm._v("mdi-bell")])],
+                        ]
+                      },
+                      proxy: true
+                    }
+                  ])
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "v-row",
+                    { attrs: { align: "center", justify: "center" } },
+                    _vm._l(_vm.icons, function(icon) {
+                      return _c(
+                        "v-col",
+                        { key: icon, staticClass: "ma-2" },
+                        [
+                          _c(
+                            "v-tooltip",
+                            {
+                              attrs: { "content-class": "top", top: "" },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "activator",
+                                    fn: function(ref) {
+                                      var attrs = ref.attrs
+                                      var on = ref.on
+                                      return [
+                                        _c(
+                                          "v-icon",
+                                          _vm._g(
+                                            _vm._b({}, "v-icon", attrs, false),
+                                            on
+                                          ),
+                                          [
+                                            _vm._v(
+                                              "\n                  " +
+                                                _vm._s(icon) +
+                                                "\n                "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ],
+                                null,
+                                true
+                              )
+                            },
+                            [_vm._v(" "), _c("span", [_vm._v(_vm._s(icon))])]
+                          )
+                        ],
                         1
                       )
-                    ],
+                    }),
                     1
                   )
-                ]
-              }
-            }
-          ])
-        },
-        [
+                ],
+                1
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("v-list", { attrs: { tile: false, nav: "" } }, [
-            _c(
-              "div",
-              _vm._l(_vm.notifications, function(n, i) {
-                return _c(
-                  "app-bar-item",
-                  { key: "item-" + i },
-                  [
-                    _c("v-list-item-title", {
-                      domProps: { textContent: _vm._s(n) }
-                    })
-                  ],
-                  1
-                )
-              }),
-              1
-            )
-          ])
+          _c(
+            "v-col",
+            { staticClass: "mx-auto", attrs: { cols: "auto" } },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: {
+                    color: "success",
+                    href: "https://materialdesignicons.com/",
+                    large: "",
+                    target: "_blank"
+                  }
+                },
+                [
+                  _c("v-icon", { attrs: { left: "" } }, [
+                    _vm._v("\n          mdi-material-design\n        ")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("See all icons")])
+                ],
+                1
+              )
+            ],
+            1
+          )
         ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-btn",
-        {
-          staticClass: "ml-2",
-          attrs: { "min-width": "0", text: "", to: "/pages/user" }
-        },
-        [_c("v-icon", [_vm._v("mdi-account")])],
         1
       )
     ],
@@ -385,17 +273,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/core/AppBar.vue":
-/*!*************************************************!*\
-  !*** ./resources/js/components/core/AppBar.vue ***!
-  \*************************************************/
+/***/ "./resources/js/components/component/Icons.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/component/Icons.vue ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _AppBar_vue_vue_type_template_id_10e278c7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppBar.vue?vue&type=template&id=10e278c7& */ "./resources/js/components/core/AppBar.vue?vue&type=template&id=10e278c7&");
-/* harmony import */ var _AppBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppBar.vue?vue&type=script&lang=js& */ "./resources/js/components/core/AppBar.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Icons_vue_vue_type_template_id_133a23ed___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Icons.vue?vue&type=template&id=133a23ed& */ "./resources/js/components/component/Icons.vue?vue&type=template&id=133a23ed&");
+/* harmony import */ var _Icons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Icons.vue?vue&type=script&lang=js& */ "./resources/js/components/component/Icons.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -405,9 +293,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _AppBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _AppBar_vue_vue_type_template_id_10e278c7___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _AppBar_vue_vue_type_template_id_10e278c7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Icons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Icons_vue_vue_type_template_id_133a23ed___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Icons_vue_vue_type_template_id_133a23ed___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -417,38 +305,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/core/AppBar.vue"
+component.options.__file = "resources/js/components/component/Icons.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/core/AppBar.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/core/AppBar.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
+/***/ "./resources/js/components/component/Icons.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/component/Icons.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppBar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/core/AppBar.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Icons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Icons.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/component/Icons.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Icons_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/core/AppBar.vue?vue&type=template&id=10e278c7&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/core/AppBar.vue?vue&type=template&id=10e278c7& ***!
-  \********************************************************************************/
+/***/ "./resources/js/components/component/Icons.vue?vue&type=template&id=133a23ed&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/component/Icons.vue?vue&type=template&id=133a23ed& ***!
+  \************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppBar_vue_vue_type_template_id_10e278c7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AppBar.vue?vue&type=template&id=10e278c7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/core/AppBar.vue?vue&type=template&id=10e278c7&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppBar_vue_vue_type_template_id_10e278c7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Icons_vue_vue_type_template_id_133a23ed___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Icons.vue?vue&type=template&id=133a23ed& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/component/Icons.vue?vue&type=template&id=133a23ed&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Icons_vue_vue_type_template_id_133a23ed___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppBar_vue_vue_type_template_id_10e278c7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Icons_vue_vue_type_template_id_133a23ed___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

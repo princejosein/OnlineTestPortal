@@ -8,7 +8,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/admin',
       component: () => import('../components/dashboard/Index'),
       children: [
         // Dashboard
@@ -29,6 +29,16 @@ export default new Router({
             name: 'Quiz',
             path: 'pages/quiz',
             component: () => import('../components/dashboard/pages/quiz/List'),
+          },
+          {
+            name: 'Create Quiz',
+            path: 'pages/quiz/upsert',
+            component: () => import('../components/dashboard/pages/quiz/Upsert'),
+          },
+          {
+            name: 'Edit Quiz',
+            path: 'pages/quiz/upsert/:id',
+            component: () => import('../components/dashboard/pages/quiz/Upsert'),
           },
         // Questions
         {
@@ -74,5 +84,25 @@ export default new Router({
           },
       ],
     },
+    // frontend
+    {
+        path: '/',
+        component: () => import('../components/frontend/Index'),
+        children: [
+          // Home
+          {
+              name: 'Home',
+              path: '',
+              component: () => import('../components/frontend/Home'),
+            },
+
+            {
+                name: 'Exam',
+                path: 'exam/:quiz_id',
+                component: () => import('../components/frontend/pages/exam/Exam'),
+              },
+
+        ],
+      },
   ],
 })

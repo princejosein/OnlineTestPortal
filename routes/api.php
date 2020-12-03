@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('category', CategoryController::class);
+Route::get('category/list', 'CategoryController@GetCategoryListApi');
 Route::apiResource('quiz', QuizController::class);
+Route::get('quiz/questions/{id}', 'QuizController@getQuizQuestions');
 Route::apiResource('question', QuestionController::class);
+Route::apiResource('exam', ExamController::class);
+// Route::apiResource('examresult', ExamResultController::class);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

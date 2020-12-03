@@ -95,4 +95,13 @@ class CategoryController extends Controller
     {
         //
     }
+
+    public function GetCategoryListApi()
+    {
+        $categories = new CategoryCollection(Category::latest()->get());
+        return response()->json([
+            'results' => $categories,
+            'success' => true,
+        ]);
+    }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\QuestionCollection;
+use App\Http\Resources\Quiz as ResourcesQuiz;
 use App\Http\Resources\QuizCollection;
+use App\Models\Question;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,11 +43,14 @@ class QuizController extends Controller
     {
         $quiz = new Quiz();
         $quiz->name = $request->name;
-        $quiz->question_level = $this->question_level_to_id($request->question_level);
+        $quiz->question_level = $quiz->question_level_to_id($request->question_level);
         $quiz->category_id = $request->category_id;
         $quiz->status = $request->status == 'Active' ? 1 : 0;
         $quiz->save();
-        return response("Quiz Created", Response::HTTP_OK);
+        return response()->json([
+            'quiz_id' => $quiz->id,
+            'success' => true
+        ], 200);
     }
 
     /**
@@ -55,7 +61,8 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        //
+        $quizCollection = new ResourcesQuiz($quiz);
+        return $quizCollection;
     }
 
     /**
@@ -95,5 +102,11 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
         //
+    }
+    public function getQuizQuestions($id)
+    {
+        $questions = new QuestionCollection(Question::latest()->with('options')->where('quiz_id', $id)->get());
+
+        return $questions;
     }
 }
