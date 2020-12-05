@@ -21,7 +21,24 @@ Route::get('quiz/questions/{id}', 'QuizController@getQuizQuestions');
 Route::apiResource('question', QuestionController::class);
 Route::apiResource('exam', ExamController::class);
 // Route::apiResource('examresult', ExamResultController::class);
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::apiResource('user', UserController::class);
+});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function () {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+    Route::post('register', 'AuthController@register');
 });

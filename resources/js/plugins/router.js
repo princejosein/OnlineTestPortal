@@ -102,6 +102,18 @@ export default new Router({
                 component: () => import('../components/frontend/pages/exam/Exam'),
               },
 
+              {
+                name: 'Create User',
+                path: 'user/create',
+                component: () => import('../components/frontend/pages/user/CreateUser'),
+              },
+
+              {
+                name: 'Login User',
+                path: 'user/login',
+                component: () => import('../components/frontend/pages/user/Login'),
+              },
+
         ],
       },
   ],
