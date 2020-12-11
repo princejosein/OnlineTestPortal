@@ -136,26 +136,45 @@ export default {
 
         }
     },
-
+    mounted(){
+        console.log(process.env.MIX_VUE_NODE_ENV);
+        if(User.loggedIn()){
+            this.$router.push('/')
+        }
+    },
     methods: {
       async submit () {
         this.server_success_set = false;
         this.server_error_set = false;
-        this.$refs.observer.validate()
+        this.$refs.observer.validate();
         try {
-            const response = await axios.post('api/auth/register', this.user);
-            this.server_success_set = true;
-            this.server_success = "User Created successfully"
-        } catch (error) {
-            this.server_error_set = true;
-            this.server_error = error.response.statusText
-            console.log(error.response.data.errors)
-           if(error.response.status == 422 && typeof error.response.data == "object" && error.response.data)
-            {
-                this.$refs.observer.setErrors(error.response.data.errors);
-                this.server_error = 'Validation Error'
+            let res= await this.$store.dispatch('auth/register',this.user);
+            if(res.formError){
+                this.$refs.observer.setErrors(res.formError);
             }
+        } catch (error) {
+
         }
+        // try {
+        //     const response = await axios.post('api/auth/register', this.user);
+        //     if(User.responseAfterLogin(response)){
+        //         this.server_success_set = true;
+        //         this.server_success = "User Created successfully"
+        //         this.$router.push('../admin')
+        //     } else {
+        //         this.$router.push('login')
+        //     }
+
+        // } catch (error) {
+        //     this.server_error_set = true;
+        //     this.server_error = error.response.statusText
+        //     console.log(error.response.data.errors)
+        //    if(error.response.status == 422 && typeof error.response.data == "object" && error.response.data)
+        //     {
+        //         this.$refs.observer.setErrors(error.response.data.errors);
+        //         this.server_error = 'Validation Error'
+        //     }
+        // }
       },
       clear () {
         this.user = {

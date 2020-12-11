@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[10],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -223,44 +223,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "QuizList",
+  name: "QuestionList",
   data: function data() {
     return {
-      quizLevel: ['Beginner', 'Intermediate', 'Expert'],
+      quiz_id: this.$route.params.quiz_id,
+      defaultItem: {
+        id: 0,
+        question: '',
+        quiz_id: this.$route.params.quiz_id,
+        radioGroup: 0,
+        options: [{
+          option: "",
+          id: 0
+        }, {
+          option: "",
+          id: 0
+        }, {
+          option: "",
+          id: 0
+        }]
+      },
+      editedItem: {
+        id: 0,
+        question: '',
+        quiz_id: this.$route.params.quiz_id,
+        radioGroup: 0,
+        options: [{
+          option: "",
+          id: 0
+        }, {
+          option: "",
+          id: 0
+        }, {
+          option: "",
+          id: 0
+        }]
+      },
+      quiz_details: [],
       errored: false,
       valid: true,
       statuses: ['Active', 'Not Active'],
       dialog: false,
       dialogDelete: false,
       editedIndex: -1,
-      editedItem: {
-        id: 0,
-        name: '',
-        question_level: '',
-        category_id: '',
-        status: ''
-      },
-      defaultItem: {
-        id: 0,
-        name: '',
-        question_level: '',
-        category_id: '',
-        status: ''
-      },
       total: "0",
       active: "0",
       headers: [{
         text: 'Name',
         align: 'start',
         sortable: false,
-        value: 'name'
-      }, {
-        text: 'Question level',
-        value: 'question_level'
-      }, {
-        text: 'Category',
-        value: 'category_name'
+        value: 'question'
       }, {
         text: 'Status',
         value: 'status'
@@ -275,13 +300,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         value: 'actions',
         sortable: false
       }],
-      categoriesList: [],
-      quizLists: []
+      questionList: []
     };
   },
   computed: {
     formTitle: function formTitle() {
-      return this.editedIndex === -1 ? 'New Quiz' : 'Edit Quiz';
+      return this.editedIndex === -1 ? 'New Question' : 'Edit Question';
     }
   },
   // Check dialog open or close
@@ -290,13 +314,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       val || this.close();
     }
   },
+  // created(){
+  // },
   // Load categories from API
   mounted: function mounted() {
-    this.getCategories();
-    this.getQuizLists();
+    this.getQuize();
+    this.getQuestions();
   },
   methods: {
-    getQuizLists: function getQuizLists() {
+    getQuize: function getQuize() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -307,31 +333,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.get('/api/quiz');
+                return axios.get("/api/quiz/".concat(_this.quiz_id));
 
               case 3:
                 response = _context.sent;
-                _this.quizLists = response.data.data;
+                _this.quiz_details = response.data.data;
                 _this.total = response.data.total.toString();
-                _this.active = response.data.active.toString();
-                _context.next = 13;
+                _context.next = 12;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](0);
                 _this.errored = true;
                 console.log(_context.t0);
 
-              case 13:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 8]]);
       }))();
     },
-    getCategories: function getCategories() {
+    getQuestions: function getQuestions() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -342,34 +367,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios.get('/api/category');
+                return axios.get("/api/quiz/questions/".concat(_this2.quiz_id));
 
               case 3:
                 response = _context2.sent;
-                _this2.categoriesList = response.data.data;
+                _this2.questionList = response.data.data;
                 _this2.total = response.data.total.toString();
-                _this2.active = response.data.active.toString();
-                _context2.next = 13;
+                _context2.next = 12;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
                 _this2.errored = true;
                 console.log(_context2.t0);
 
-              case 13:
+              case 12:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     },
     editItem: function editItem(item) {
-      this.editedIndex = this.quizLists.indexOf(item);
+      this.editedIndex = this.questionList.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
+      console.log(this.editedItem);
     },
     close: function close() {
       var _this3 = this;
@@ -390,49 +415,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
+                console.log(_this4.editedItem);
                 _this4.errored = false;
-                _context3.prev = 1;
+                _context3.prev = 2;
 
                 if (!(_this4.editedIndex === -1)) {
-                  _context3.next = 8;
+                  _context3.next = 9;
                   break;
                 }
 
-                _context3.next = 5;
-                return axios.post("/api/quiz", _this4.editedItem);
+                _context3.next = 6;
+                return axios.post("/api/question", _this4.editedItem);
 
-              case 5:
+              case 6:
                 response = _context3.sent;
-                _context3.next = 11;
+                _context3.next = 12;
                 break;
 
-              case 8:
-                _context3.next = 10;
-                return axios.put("/api/quiz/".concat(_this4.editedItem.id), _this4.editedItem);
-
-              case 10:
-                _response = _context3.sent;
+              case 9:
+                _context3.next = 11;
+                return axios.put("/api/question/".concat(_this4.editedItem.id), _this4.editedItem);
 
               case 11:
+                _response = _context3.sent;
+
+              case 12:
                 _this4.close();
 
-                _this4.getQuizLists();
+                _this4.getQuestions();
 
-                _context3.next = 19;
+                _context3.next = 20;
                 break;
 
-              case 15:
-                _context3.prev = 15;
-                _context3.t0 = _context3["catch"](1);
+              case 16:
+                _context3.prev = 16;
+                _context3.t0 = _context3["catch"](2);
                 console.log(_context3.t0);
                 _this4.errored = true;
 
-              case 19:
+              case 20:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[1, 15]]);
+        }, _callee3, null, [[2, 16]]);
       }))();
     }
   }
@@ -440,10 +466,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -459,15 +485,15 @@ exports.push([module.i, "\nspan {\n  display: block;\n}\n", ""]);
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./List.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuizList.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -489,10 +515,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=template&id=fffd3512&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=template&id=fffd3512& ***!
-  \****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=template&id=c1c166f4&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=template&id=c1c166f4& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -506,7 +532,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-container",
-    { attrs: { id: "quiz-list", fluid: "", tag: "section" } },
+    { attrs: { id: "quiz-questions-list", fluid: "", tag: "section" } },
     [
       _c(
         "v-row",
@@ -520,7 +546,7 @@ var render = function() {
                   color: "info",
                   icon: "mdi-shape-outline",
                   title: "Total",
-                  value: _vm.total
+                  value: "2"
                 }
               })
             ],
@@ -536,7 +562,7 @@ var render = function() {
                   color: "success",
                   icon: "mdi-lightbulb-on",
                   title: "Active",
-                  value: _vm.active
+                  value: "3"
                 }
               })
             ],
@@ -551,7 +577,7 @@ var render = function() {
                 attrs: {
                   color: "secondary",
                   icon: "mdi-lightbulb-on",
-                  title: "Category",
+                  title: "Quiz",
                   value: "230"
                 }
               })
@@ -583,12 +609,12 @@ var render = function() {
                 "base-material-card",
                 {
                   staticClass: "px-5 py-3",
-                  attrs: { icon: "mdi-clipboard-text", title: "Quiz List" }
+                  attrs: { icon: "mdi-clipboard-text", title: "Question List" }
                 },
                 [
                   _c("v-data-table", {
                     staticClass: "elevation-1",
-                    attrs: { headers: _vm.headers, items: _vm.quizLists },
+                    attrs: { headers: _vm.headers, items: _vm.questionList },
                     scopedSlots: _vm._u([
                       {
                         key: "top",
@@ -630,7 +656,7 @@ var render = function() {
                                               ),
                                               [
                                                 _vm._v(
-                                                  "\n            New Quiz\n            "
+                                                  "\n            New Question\n            "
                                                 )
                                               ]
                                             )
@@ -714,9 +740,9 @@ var render = function() {
                                                                         {
                                                                           attrs: {
                                                                             name:
-                                                                              "Quiz Name",
+                                                                              "Question",
                                                                             rules:
-                                                                              "required|max:64"
+                                                                              "required"
                                                                           },
                                                                           scopedSlots: _vm._u(
                                                                             [
@@ -734,26 +760,26 @@ var render = function() {
                                                                                       {
                                                                                         attrs: {
                                                                                           label:
-                                                                                            "Quiz Name",
+                                                                                            "Question",
                                                                                           "data-vv-as":
-                                                                                            "Quiz Name"
+                                                                                            "Question"
                                                                                         },
                                                                                         model: {
                                                                                           value:
                                                                                             _vm
                                                                                               .editedItem
-                                                                                              .name,
+                                                                                              .question,
                                                                                           callback: function(
                                                                                             $$v
                                                                                           ) {
                                                                                             _vm.$set(
                                                                                               _vm.editedItem,
-                                                                                              "name",
+                                                                                              "question",
                                                                                               $$v
                                                                                             )
                                                                                           },
                                                                                           expression:
-                                                                                            "editedItem.name"
+                                                                                            "editedItem.question"
                                                                                         }
                                                                                       }
                                                                                     ),
@@ -787,67 +813,124 @@ var render = function() {
                                                                         " "
                                                                       ),
                                                                       _c(
-                                                                        "v-select",
+                                                                        "v-radio-group",
                                                                         {
-                                                                          attrs: {
-                                                                            items:
-                                                                              _vm.quizLevel,
-                                                                            label:
-                                                                              "Quiz Level"
-                                                                          },
                                                                           model: {
                                                                             value:
                                                                               _vm
                                                                                 .editedItem
-                                                                                .question_level,
+                                                                                .radioGroup,
                                                                             callback: function(
                                                                               $$v
                                                                             ) {
                                                                               _vm.$set(
                                                                                 _vm.editedItem,
-                                                                                "question_level",
+                                                                                "radioGroup",
                                                                                 $$v
                                                                               )
                                                                             },
                                                                             expression:
-                                                                              "editedItem.question_level"
+                                                                              "editedItem.radioGroup"
                                                                           }
-                                                                        }
-                                                                      ),
-                                                                      _vm._v(
-                                                                        " "
-                                                                      ),
-                                                                      _c(
-                                                                        "v-select",
-                                                                        {
-                                                                          attrs: {
-                                                                            items:
-                                                                              _vm.categoriesList,
-                                                                            "item-text":
-                                                                              "name",
-                                                                            "item-value":
-                                                                              "id",
-                                                                            label:
-                                                                              "Category"
-                                                                          },
-                                                                          model: {
-                                                                            value:
-                                                                              _vm
-                                                                                .editedItem
-                                                                                .category_id,
-                                                                            callback: function(
-                                                                              $$v
-                                                                            ) {
-                                                                              _vm.$set(
-                                                                                _vm.editedItem,
-                                                                                "category_id",
-                                                                                $$v
-                                                                              )
-                                                                            },
-                                                                            expression:
-                                                                              "editedItem.category_id"
+                                                                        },
+                                                                        _vm._l(
+                                                                          _vm
+                                                                            .editedItem
+                                                                            .options,
+                                                                          function(
+                                                                            item,
+                                                                            index
+                                                                          ) {
+                                                                            return _c(
+                                                                              "v-row",
+                                                                              {
+                                                                                key: index,
+                                                                                attrs: {
+                                                                                  align:
+                                                                                    "center"
+                                                                                }
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "v-col",
+                                                                                  {
+                                                                                    attrs: {
+                                                                                      cols:
+                                                                                        "1"
+                                                                                    }
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-list-item-action",
+                                                                                      [
+                                                                                        _c(
+                                                                                          "v-radio",
+                                                                                          {
+                                                                                            key: index,
+                                                                                            attrs: {
+                                                                                              color:
+                                                                                                "secondary",
+                                                                                              value: index
+                                                                                            }
+                                                                                          }
+                                                                                        )
+                                                                                      ],
+                                                                                      1
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                ),
+                                                                                _vm._v(
+                                                                                  " "
+                                                                                ),
+                                                                                _c(
+                                                                                  "v-col",
+                                                                                  {
+                                                                                    attrs: {
+                                                                                      cols:
+                                                                                        "11"
+                                                                                    }
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "v-text-field",
+                                                                                      {
+                                                                                        attrs: {
+                                                                                          label:
+                                                                                            "Option " +
+                                                                                            (index +
+                                                                                              1),
+                                                                                          "data-vv-as":
+                                                                                            "Option " +
+                                                                                            (index +
+                                                                                              1)
+                                                                                        },
+                                                                                        model: {
+                                                                                          value:
+                                                                                            item.option,
+                                                                                          callback: function(
+                                                                                            $$v
+                                                                                          ) {
+                                                                                            _vm.$set(
+                                                                                              item,
+                                                                                              "option",
+                                                                                              $$v
+                                                                                            )
+                                                                                          },
+                                                                                          expression:
+                                                                                            "item.option"
+                                                                                        }
+                                                                                      }
+                                                                                    )
+                                                                                  ],
+                                                                                  1
+                                                                                )
+                                                                              ],
+                                                                              1
+                                                                            )
                                                                           }
-                                                                        }
+                                                                        ),
+                                                                        1
                                                                       ),
                                                                       _vm._v(
                                                                         " "
@@ -879,37 +962,35 @@ var render = function() {
                                                                               "editedItem.status"
                                                                           }
                                                                         }
-                                                                      ),
-                                                                      _vm._v(
-                                                                        " "
-                                                                      ),
-                                                                      _vm.errored
-                                                                        ? _c(
-                                                                            "v-col",
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _vm.errored
+                                                                    ? _c(
+                                                                        "v-col",
+                                                                        [
+                                                                          _c(
+                                                                            "section",
                                                                             [
                                                                               _c(
-                                                                                "section",
+                                                                                "span",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "red--text"
+                                                                                },
                                                                                 [
-                                                                                  _c(
-                                                                                    "span",
-                                                                                    {
-                                                                                      staticClass:
-                                                                                        "red--text"
-                                                                                    },
-                                                                                    [
-                                                                                      _vm._v(
-                                                                                        "Sorry, we are too busy. Please try again after some time"
-                                                                                      )
-                                                                                    ]
+                                                                                  _vm._v(
+                                                                                    "Sorry, we are too busy. Please try again after some time"
                                                                                   )
                                                                                 ]
                                                                               )
                                                                             ]
                                                                           )
-                                                                        : _vm._e()
-                                                                    ],
-                                                                    1
-                                                                  )
+                                                                        ]
+                                                                      )
+                                                                    : _vm._e()
                                                                 ],
                                                                 1
                                                               )
@@ -1024,18 +1105,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/dashboard/pages/quiz/List.vue":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/dashboard/pages/quiz/List.vue ***!
-  \***************************************************************/
+/***/ "./resources/js/components/dashboard/pages/questions/QuizList.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/dashboard/pages/questions/QuizList.vue ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _List_vue_vue_type_template_id_fffd3512___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./List.vue?vue&type=template&id=fffd3512& */ "./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=template&id=fffd3512&");
-/* harmony import */ var _List_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./List.vue?vue&type=script&lang=js& */ "./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _List_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./List.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _QuizList_vue_vue_type_template_id_c1c166f4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./QuizList.vue?vue&type=template&id=c1c166f4& */ "./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=template&id=c1c166f4&");
+/* harmony import */ var _QuizList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuizList.vue?vue&type=script&lang=js& */ "./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _QuizList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QuizList.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1046,9 +1127,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _List_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _List_vue_vue_type_template_id_fffd3512___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _List_vue_vue_type_template_id_fffd3512___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _QuizList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _QuizList_vue_vue_type_template_id_c1c166f4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _QuizList_vue_vue_type_template_id_c1c166f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1058,54 +1139,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/dashboard/pages/quiz/List.vue"
+component.options.__file = "resources/js/components/dashboard/pages/questions/QuizList.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./List.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuizList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css& ***!
-  \************************************************************************************************/
+/***/ "./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./List.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuizList.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=template&id=fffd3512&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=template&id=fffd3512& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=template&id=c1c166f4&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=template&id=c1c166f4& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_template_id_fffd3512___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./List.vue?vue&type=template&id=fffd3512& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/quiz/List.vue?vue&type=template&id=fffd3512&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_template_id_fffd3512___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_template_id_c1c166f4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./QuizList.vue?vue&type=template&id=c1c166f4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pages/questions/QuizList.vue?vue&type=template&id=c1c166f4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_template_id_c1c166f4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_template_id_fffd3512___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_QuizList_vue_vue_type_template_id_c1c166f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

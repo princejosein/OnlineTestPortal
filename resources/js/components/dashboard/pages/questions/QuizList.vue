@@ -219,13 +219,13 @@ tag="section">
 <script>
 export default {
     name:"QuestionList",
-    data() {
+    data: function () {
         return {
             quiz_id:this.$route.params.quiz_id,
             defaultItem:{
                 id:0,
                 question:'',
-                quiz_id:quiz_id,
+                quiz_id:this.$route.params.quiz_id,
                 radioGroup:0,
                 options:[
                     {option:"", id:0},
@@ -236,7 +236,7 @@ export default {
             editedItem: {
                 id:0,
                 question:'',
-                quiz_id:quiz_id,
+                quiz_id:this.$route.params.quiz_id,
                 radioGroup:0,
                 options:[
                     {option:"", id:0},
@@ -288,13 +288,13 @@ export default {
     // },
     // Load categories from API
     mounted() {
-        this.getQuize(this.$route.params.quiz_id)
+        this.getQuize()
         this.getQuestions()
     },
     methods: {
-        async getQuize(quiz_id_param) {
+        async getQuize() {
             try {
-                const response = await axios.get(`/api/quiz/${quiz_id_param}`);
+                const response = await axios.get(`/api/quiz/${this.quiz_id}`);
                 this.quiz_details = response.data.data;
                 this.total =  response.data.total.toString();
             } catch (error) {
@@ -304,7 +304,7 @@ export default {
         },
         async getQuestions() {
             try {
-                const response = await axios.get('/api/question');
+                const response = await axios.get(`/api/quiz/questions/${this.quiz_id}`);
                 this.questionList = response.data.data;
                 this.total =  response.data.total.toString();
             } catch (error) {
@@ -326,6 +326,7 @@ export default {
             })
         },
         async onSubmit () {
+            console.log(this.editedItem)
             this.errored = false;
             try {
                 if(this.editedIndex === -1)

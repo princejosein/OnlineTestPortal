@@ -9,42 +9,56 @@
     <router-link v-for="item in filterItems" :key="item.title" :to="item.to">
       <v-btn text>{{ item.title }}</v-btn>
     </router-link>
+    <a v-if="loggedIn" @click="logout()" >
+      <v-btn text>Logout</v-btn>
+    </a>
   </v-toolbar>
 </template>
 
 <script>
+import User from '../../../helper/User';
 export default {
   data() {
     return {
       items: [
         {
-          title: "forum",
-          to: "/forum",
-          show: true,
-        },
-        {
-          title: "Ask Question",
-          to: "/ask",
+          title: "Home",
+          to: "/",
           show: true,
         },
         {
           title: "Login",
-          to: "/login",
-          show: true,
+          to: "/user/login",
+          show: !User.loggedIn(),
         },
         {
-          title: "Logout",
-          to: "/logout",
-          show: true,
+          title: "Dashboard",
+          to: "/admin",
+          show: User.loggedIn(),
         },
       ],
+      loggedIn:User.loggedIn()
     };
   },
   computed: {
     filterItems() {
       return this.items.filter((item) => item.show);
     },
+    isAdmin() {
+        return this.$store.getters['auth/isAdmin'];
+    },
+    isLoggedIn() {
+        return this.$store.getters['auth/isLoggedIn'];
+    }
   },
+  methods:{
+      logout() {
+          this.$store.dispatch('auth/logout')
+        //   this.$router.push('/user/login')
+        // this.$forceUpdate();
+        location.reload(true);
+      }
+  }
 };
 </script>
 

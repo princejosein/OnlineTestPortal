@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// import store from '../store'
 
 Vue.use(Router)
 
-export default new Router({
+let router =  new Router({
   mode: 'hash',
-  base: process.env.BASE_URL,
+  base: process.env.MIX_VUE_APP_BASE_URL,
   routes: [
     {
       path: '/admin',
@@ -41,13 +42,13 @@ export default new Router({
             component: () => import('../components/dashboard/pages/quiz/Upsert'),
           },
         // Questions
+        // {
+        //     name: 'Questions',
+        //     path: 'pages/questions',
+        //     component: () => import('../components/dashboard/pages/questions/List'),
+        // },
         {
             name: 'Questions',
-            path: 'pages/questions',
-            component: () => import('../components/dashboard/pages/questions/List'),
-        },
-        {
-            name: 'Quiz Questions',
             path: 'pages/quiz/questions/:quiz_id',
             component: () => import('../components/dashboard/pages/questions/QuizList'),
         },
@@ -106,15 +107,50 @@ export default new Router({
                 name: 'Create User',
                 path: 'user/create',
                 component: () => import('../components/frontend/pages/user/CreateUser'),
+                meta: {
+                    // requiresAuth: true,
+                    // requireAdmin: true
+                  }
               },
 
               {
                 name: 'Login User',
                 path: 'user/login',
                 component: () => import('../components/frontend/pages/user/Login'),
+
+              },
+
+              {
+                name: 'Category',
+                path: 'category/:cat_id',
+                component: () => import('../components/frontend/pages/category/Category'),
               },
 
         ],
       },
   ],
 })
+
+router.beforeEach((to, from, next) => {
+    if(to.matched.some(record => record.meta.requiresAuth)) {
+      if (this.$store.getters['auth/isLoggedIn']) {
+
+        //Needs admin access
+          if(record.meta.requireAdmin) {
+            if (this.$store.getters['auth/isAdmin']) {
+                next()
+                return
+            } else {
+                next('/')
+            }
+          }
+        next()
+        return
+      }
+      next('/user/login')
+    } else {
+      next()
+    }
+  })
+
+export default router;

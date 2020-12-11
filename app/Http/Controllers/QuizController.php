@@ -8,6 +8,7 @@ use App\Http\Resources\QuizCollection;
 use App\Models\Question;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Symfony\Component\HttpFoundation\Response;
 
 class QuizController extends Controller
@@ -17,9 +18,25 @@ class QuizController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $quiz = new QuizCollection(Quiz::latest()->get());
+        $quiz = Quiz::latest();
+        if ($request->has('category_id')) {
+            $quiz = $quiz->where('category_id', $request->input('category_id'));
+        }
+        if ($request->has('level')) {
+            if ($request->input('level') != 0) {
+                $quiz = $quiz->where('question_level', $request->input('level'));
+            }
+        }
+        if ($request->has('search')) {
+            if ($request->input('search') != "") {
+                $quiz = $quiz->where('name', 'like', '%' . $request->input('search') . '%');
+            }
+        }
+
+        $quiz = new QuizCollection($quiz->paginate(100));
+
         return $quiz;
     }
 

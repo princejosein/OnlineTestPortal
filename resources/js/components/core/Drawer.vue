@@ -119,11 +119,11 @@
           title: 'Quiz',
           to: '/admin/pages/quiz',
         },
-         {
-          icon: 'mdi-shape-outline ',
-          title: 'Questions',
-          to: '/admin/pages/questions',
-        },
+        //  {
+        //   icon: 'mdi-shape-outline ',
+        //   title: 'Questions',
+        //   to: '/admin/pages/questions',
+        // },
         {
           icon: 'mdi-account',
           title: 'user',

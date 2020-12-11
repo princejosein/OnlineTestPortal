@@ -8,6 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import User from '../js/helper/User'
+window.User = User;
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -33,10 +36,13 @@ window.Vue = require('vue');
 import vuetify from './plugins/vuetify'
 import router from './plugins/router'
 import App from './App.vue'
-import store from './plugins/store'
+// import store from './plugins/store'
+import { store } from './store/index'
 import './plugins/base'
 import './plugins/vee-validate'
 import './plugins/chartist'
+
+
 
 new Vue({
     vuetify,

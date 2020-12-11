@@ -193,6 +193,13 @@ tag="section">
         >
         mdi-pencil
         </v-icon>
+
+         <v-icon
+            class="mr-2"
+            @click="view(item)"
+        >
+        mdi-book-open
+        </v-icon>
     </template>
 
     </v-data-table>
@@ -298,6 +305,9 @@ export default {
             this.editedIndex = this.quizLists.indexOf(item)
             this.editedItem = Object.assign({}, item)
             this.dialog = true
+        },
+        view(item) {
+            this.$router.push(`/admin/pages/quiz/questions/${item.id}`)
         },
         close() {
             this.dialog = false
