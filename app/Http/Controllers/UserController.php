@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
+    private $userRepository;
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = $this->userRepository->all();
+
+        return $users;
     }
 
     /**
@@ -54,7 +64,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = $this->userRepository->show($id);
+        return $user;
     }
 
     /**

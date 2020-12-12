@@ -64,4 +64,19 @@ class User extends Authenticatable implements JWTSubject
         $data['is_admin'] = 0;
         return User::create($data);
     }
+
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
+    }
+
+    public function format()
+    {
+        return  [
+            'name' => $this->name,
+            'email' => $this->email,
+            'exams' => count($this->exams),
+            'last_updated' => $this->updated_at->diffForHumans()
+        ];
+    }
 }

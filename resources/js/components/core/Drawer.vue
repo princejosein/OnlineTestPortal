@@ -30,15 +30,12 @@
           color="white"
           contain
         >
-          <v-img
-            src="https://demos.creative-tim.com/vuetify-material-dashboard/favicon.ico"
-            max-height="30"
-          />
+
         </v-list-item-avatar>
 
         <v-list-item-content>
           <v-list-item-title
-            class="display-1"
+
             v-text="profile.title"
           />
         </v-list-item-content>
@@ -106,7 +103,7 @@
       items: [
         {
           icon: 'mdi-view-dashboard',
-          title: 'dashboard',
+          title: 'Dashboard',
           to: '/admin',
         },
         {
@@ -129,31 +126,31 @@
           title: 'user',
           to: '/admin/pages/user',
         },
-        {
-          title: 'rtables',
-          icon: 'mdi-clipboard-outline',
-          to: '/admin/tables/regular-tables',
-        },
-        {
-          title: 'typography',
-          icon: 'mdi-format-font',
-          to: '/admin/components/typography',
-        },
-        {
-          title: 'icons',
-          icon: 'mdi-chart-bubble',
-          to: '/admin/components/icons',
-        },
-        {
-          title: 'google',
-          icon: 'mdi-map-marker',
-          to: '/admin/maps/google-maps',
-        },
-        {
-          title: 'notifications',
-          icon: 'mdi-bell',
-          to: '/admin/components/notifications',
-        },
+        // {
+        //   title: 'rtables',
+        //   icon: 'mdi-clipboard-outline',
+        //   to: '/admin/tables/regular-tables',
+        // },
+        // {
+        //   title: 'typography',
+        //   icon: 'mdi-format-font',
+        //   to: '/admin/components/typography',
+        // },
+        // {
+        //   title: 'icons',
+        //   icon: 'mdi-chart-bubble',
+        //   to: '/admin/components/icons',
+        // },
+        // {
+        //   title: 'google',
+        //   icon: 'mdi-map-marker',
+        //   to: '/admin/maps/google-maps',
+        // },
+        // {
+        //   title: 'notifications',
+        //   icon: 'mdi-bell',
+        //   to: '/admin/components/notifications',
+        // },
       ],
     }),
 
@@ -164,7 +161,6 @@
           return this.$store.state.drawer
         },
         set (val) {
-            console.log(val)
           this.$store.commit('SET_DRAWER', val)
         },
       },
@@ -173,8 +169,8 @@
       },
       profile () {
         return {
-          avatar: true,
-          title: 'avatar',
+          avatar: false,
+          title: 'Learn App',
         }
       },
     },

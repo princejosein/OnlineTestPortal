@@ -101,9 +101,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 // Utilities
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -118,7 +115,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       items: [{
         icon: 'mdi-view-dashboard',
-        title: 'dashboard',
+        title: 'Dashboard',
         to: '/admin'
       }, {
         icon: 'mdi-shape-outline ',
@@ -137,27 +134,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         icon: 'mdi-account',
         title: 'user',
         to: '/admin/pages/user'
-      }, {
-        title: 'rtables',
-        icon: 'mdi-clipboard-outline',
-        to: '/admin/tables/regular-tables'
-      }, {
-        title: 'typography',
-        icon: 'mdi-format-font',
-        to: '/admin/components/typography'
-      }, {
-        title: 'icons',
-        icon: 'mdi-chart-bubble',
-        to: '/admin/components/icons'
-      }, {
-        title: 'google',
-        icon: 'mdi-map-marker',
-        to: '/admin/maps/google-maps'
-      }, {
-        title: 'notifications',
-        icon: 'mdi-bell',
-        to: '/admin/components/notifications'
-      }]
+      } // {
+      //   title: 'rtables',
+      //   icon: 'mdi-clipboard-outline',
+      //   to: '/admin/tables/regular-tables',
+      // },
+      // {
+      //   title: 'typography',
+      //   icon: 'mdi-format-font',
+      //   to: '/admin/components/typography',
+      // },
+      // {
+      //   title: 'icons',
+      //   icon: 'mdi-chart-bubble',
+      //   to: '/admin/components/icons',
+      // },
+      // {
+      //   title: 'google',
+      //   icon: 'mdi-map-marker',
+      //   to: '/admin/maps/google-maps',
+      // },
+      // {
+      //   title: 'notifications',
+      //   icon: 'mdi-bell',
+      //   to: '/admin/components/notifications',
+      // },
+      ]
     };
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['barColor', 'barImage'])), {}, {
@@ -166,7 +168,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return this.$store.state.drawer;
       },
       set: function set(val) {
-        console.log(val);
         this.$store.commit('SET_DRAWER', val);
       }
     },
@@ -175,8 +176,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     profile: function profile() {
       return {
-        avatar: true,
-        title: 'avatar'
+        avatar: false,
+        title: 'Learn App'
       };
     }
   }),
@@ -216,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'DashboardIndex',
   components: {
     DashboardCoreAppBar: function DashboardCoreAppBar() {
-      return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../core/AppBar */ "./resources/js/components/core/AppBar.vue"));
+      return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ../core/AppBar */ "./resources/js/components/core/AppBar.vue"));
     },
     DashboardCoreDrawer: function DashboardCoreDrawer() {
       return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ../core/Drawer */ "./resources/js/components/core/Drawer.vue"));
@@ -225,7 +226,7 @@ __webpack_require__.r(__webpack_exports__);
       return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../core/Settings */ "./resources/js/components/core/Settings.vue"));
     },
     DashboardCoreView: function DashboardCoreView() {
-      return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ../core/View */ "./resources/js/components/core/View.vue"));
+      return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../core/View */ "./resources/js/components/core/View.vue"));
     }
   },
   data: function data() {
@@ -357,29 +358,15 @@ var render = function() {
           _c(
             "v-list-item",
             [
-              _c(
-                "v-list-item-avatar",
-                {
-                  staticClass: "align-self-center",
-                  attrs: { color: "white", contain: "" }
-                },
-                [
-                  _c("v-img", {
-                    attrs: {
-                      src:
-                        "https://demos.creative-tim.com/vuetify-material-dashboard/favicon.ico",
-                      "max-height": "30"
-                    }
-                  })
-                ],
-                1
-              ),
+              _c("v-list-item-avatar", {
+                staticClass: "align-self-center",
+                attrs: { color: "white", contain: "" }
+              }),
               _vm._v(" "),
               _c(
                 "v-list-item-content",
                 [
                   _c("v-list-item-title", {
-                    staticClass: "display-1",
                     domProps: { textContent: _vm._s(_vm.profile.title) }
                   })
                 ],

@@ -44,7 +44,7 @@ tag="section">
           color="secondary"
           icon="mdi-lightbulb-on"
           title="Category"
-          value="230"
+          value="5"
         />
         </v-col>
 
@@ -58,7 +58,7 @@ tag="section">
           color="warning"
           icon="mdi-lightbulb-on"
           title="Exams"
-          value="23"
+          value="21"
         />
         </v-col>
 
